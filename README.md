@@ -16,7 +16,7 @@ Python support the usual mathematica operations (+; -; *; /; ** - exponentiation
 Are used to record textual information a well as arbitrary colections of bytes (strings are sequeces) - Sequences maintain a left-to-right order among the items they contain
 ##### Sequence operations
 ```len```   -> returns the length os a sequence;
-Indexing expressions: the itens of a sequence may be accessed through "[index]", the counting os the indexes start at 0. Python also admites index backward (negative index);
-Slice expressions: [index1:index2:step]
+Indexing expressions: the itens of a sequence may be accessed through "\[index\]", the counting os the indexes start at 0. Python also admites index backward (negative index);
+Slice expressions: \[index1:index2:step\]
 Concatenation using "+" and "*" signs 
 ##### Strings Immutability
