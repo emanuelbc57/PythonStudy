@@ -33,9 +33,6 @@ def is_prime(num:int): # escrita auxiliada por IA para melhora de desempenho
         i += 6
     return True
 
-def is_prime_sieve(num:int):
-    return num in get_primes_sieve(num)
-
 def get_primes(num:int):
     """
     Encontra os numeros primos até o número solicitado
@@ -123,40 +120,4 @@ def get_divisors(number:int):
 # def gets_mdc():
 # def gets_mmc():
 
-print(number_of_primes(10))   # Deve retornar 4, pois os primos até 10 são [2, 3, 5, 7]
-print(number_of_primes(100))  # Deve retornar 25, pois há 25 números primos até 100
-print(number_of_primes(1000))
 
-import timeit
-
-def test_is_prime_performance():
-    # Definir o intervalo de números para o teste
-    test_range = [100, 1000, 10000, 100000, 1000000]
-    
-    for num in test_range:
-        # Função de teste que chama is_prime para todos os números de 1 até num
-        def test_is_prime():
-            for i in range(1, num + 1):
-                is_prime(i)
-
-        # Medir o tempo de execução
-        execution_time = timeit.timeit(test_is_prime, number=10)
-        print(f"Tempo total para verificar números primos até {num}: {execution_time:.4f} segundos")
-
-
-def test_is_prime_sieve_performance():
-    # Definir o intervalo de números para o teste
-    test_range = [100, 1000, 10000, 100000, 1000000]
-    
-    for num in test_range:
-        # Função de teste que chama is_prime para todos os números de 1 até num
-        def test_is_prime_sieve():
-            for i in range(1, num + 1):
-                is_prime_sieve(i)
-
-        # Medir o tempo de execução
-        execution_time = timeit.timeit(test_is_prime_sieve, number=10)
-        print(f"Tempo total para verificar números primos até {num}: {execution_time:.4f} segundos")
-# Chama o teste de desempenho
-test_is_prime_performance()
-test_is_prime_sieve_performance()
