@@ -2,7 +2,8 @@ def is_prime(number:int):
     """Diz se um numero é primo ou não"""
     if number <= 1: #failsafe
         return False
-    for i in range(2, number):
+    for i in range(2, (number+1)//2):
+        print(i)
         if number % i == 0:
             return False
     return True
@@ -37,3 +38,4 @@ def get_divisors(number:int):
 
 # def gets_mdc():
 # def gets_mmc():
+print(is_prime(29))
