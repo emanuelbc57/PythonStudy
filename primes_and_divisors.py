@@ -1,7 +1,6 @@
 def is_prime(num:int): # escrita auxiliada por IA para melhora de desempenho
     """
     Diz se um numero é primo.
-    Obs.: Zero (0), um (1) e números negativos não são considerados números primos.
     
     ARGS
         num (int): numero a ser verificado
@@ -14,6 +13,9 @@ def is_prime(num:int): # escrita auxiliada por IA para melhora de desempenho
         True
         >>> is_prime(4)
         False
+    
+    NOTE:
+        Zero, um, e números negativos não são considerados números primos e a função retornará False
     """
     if num <= 1: #failsafe
         return False
@@ -36,8 +38,7 @@ def is_prime(num:int): # escrita auxiliada por IA para melhora de desempenho
 def get_primes(num:int):
     """
     Encontra os numeros primos até o número solicitado
-    Obs: Para o caso de números menores que 2 (<2), a função retornará uma lista vazia
-
+    
     ARGS:
         num(int): numero topo a ser verificado
 
@@ -49,6 +50,8 @@ def get_primes(num:int):
         [2, 3, 5, 7]
         >>> get_primes(5)
         [2, 3, 5]
+    NOTE:
+        Se um numero menor que 2 for passado, a função retornará uma lista vazia
     """
     primes = []
     if num < 2: #failsafe
@@ -64,8 +67,7 @@ def get_primes(num:int):
 def get_primes_sieve(num:int): #escrita auxiliada por IA
     """
     Encontra os numeros primos até o número solicitado
-    Obs: Para o caso de números menores que 2 (<2), a função retornará uma lista vazia
-
+    
     ARGS:
         num(int): numero topo a ser verificado
 
@@ -76,7 +78,11 @@ def get_primes_sieve(num:int): #escrita auxiliada por IA
         >>> get_primes(30)
         [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
         >>> get_primes(5)
-        [2, 3, 5]"""
+        [2, 3, 5]
+        
+    NOTE:
+        Se um numero menor que 2 for passado, a função retornará uma lista vazia
+"""
      # Cria uma lista chamada sieve com num + 1 elementos, todos inicializados como True
     sieve = [True] * (num+1) 
     sieve[0] = sieve[1] = False # 0 e 1 não são numeros primos
@@ -109,12 +115,37 @@ def number_of_primes(num:int):
     """
     return len(get_primes_sieve(num))
 
-def get_divisors(number:int):
-    """Devolve um tupple (lista de divisores, quantidade de divisores)"""
+def get_divisors(num:int):
+    """
+    Retorna os divisores de um numero e o sua quantidade
+    
+    ARGS
+        num(int): numero a ser avaliado
+        
+    RETURNS
+         RETURNS:
+        tuple: Uma tupla contendo:
+            - list: Uma lista com todos os divisores de `number`, em ordem crescente.
+            - int: A quantidade total de divisores encontrados.
+
+    EXEMPLOS:
+        >>> get_divisors(28)
+        ([1, 2, 4, 7, 14, 28], 6)
+        
+        >>> get_divisors(16)
+        ([1, 2, 4, 8, 16], 5)
+    
+    NOTE:
+        Se um número não positivo for passado, a função retornará uma lista vazia e 0 como quantidade de divisores.
+        """
+    
     divisors = []
-    for i in range(2, number+1):
-        if number % i == 0:
+    for i in range(1, int(num**0.5 + 1)):
+        if num % i == 0:
             divisors.append(i)
+            if i != num // i:
+                divisors.append(num//i)
+    divisors.sort()
     return (divisors, len(divisors))
 
 # def gets_mdc():
