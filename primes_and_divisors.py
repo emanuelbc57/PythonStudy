@@ -28,11 +28,10 @@ def is_prime(num:int): # escrita auxiliada por IA para melhora de desempenho
     #   ou como um múltiplo de 3 (já descartados)
     #   ou como 6k (já descartados nos multiplos de dois e 3)
     #   ou como (6k +/- 1), que são os numeros que serão iterados na proxima sessão
-    i = 5 
-    while i * i < num:
+
+    for i in range(5, int(num**0.5) + 1, 6):
         if num % i == 0 or num % (i + 2) == 0:
             return False
-        i += 6
     return True
 
 def get_primes(num:int):
@@ -75,15 +74,15 @@ def get_primes_sieve(num:int): #escrita auxiliada por IA
         list: lista com os numeros primos encontrados até o numero topo
        
     EXEMPLOS:
-        >>> get_primes(30)
+        >>> get_primes_sieve(30)
         [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
-        >>> get_primes(5)
+        >>> get_primes_sieve(5)
         [2, 3, 5]
         
     NOTE:
         Se um numero menor que 2 for passado, a função retornará uma lista vazia
-"""
-     # Cria uma lista chamada sieve com num + 1 elementos, todos inicializados como True
+    """
+    # Cria uma lista chamada sieve com num + 1 elementos, todos inicializados como True
     sieve = [True] * (num+1) 
     sieve[0] = sieve[1] = False # 0 e 1 não são numeros primos
 
@@ -136,15 +135,14 @@ def get_divisors(num:int):
     
     NOTE:
         Se um número não positivo for passado, a função retornará uma lista vazia e 0 como quantidade de divisores.
-        """
-    
-    divisors = []
+    """
+    divisors = set()
     for i in range(1, int(num**0.5 + 1)):
         if num % i == 0:
-            divisors.append(i)
-            if i != num // i:
-                divisors.append(num//i)
-    divisors.sort()
+            divisors.add(i)
+            divisors.add(num//i)
+
+    divisors = sorted(list(divisors))
     return (divisors, len(divisors))
 
 # def gets_mdc():
