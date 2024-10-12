@@ -123,7 +123,6 @@ def get_divisors(num:int):
         num(int): numero a ser avaliado
         
     RETURNS
-         RETURNS:
         tuple: Uma tupla contendo:
             - list: Uma lista com todos os divisores de `number`, em ordem crescente.
             - int: A quantidade total de divisores encontrados.
